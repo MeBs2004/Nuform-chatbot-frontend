@@ -1,15 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import logo from "../assets/logo.png";
+import { ThreeDots } from 'react-loading';
 
 import {
   FaTimes,
   FaPaperPlane,
+  FaMoon,
+  FaSun,
 } from "react-icons/fa";
 
 function Bot() {
 
   const [language, setLanguage] = useState("English");
+
+  const [darkMode, setDarkMode] = useState(true);
 
   const [messages, setMessages] = useState([]);
 
@@ -263,7 +268,7 @@ function Bot() {
 
             {/* Right */}
             <div className="flex items-center gap-2">
-
+            
               {/* Language Dropdown */}
               <select
                 value={language}
@@ -378,27 +383,70 @@ function Bot() {
 
             ))}
 
-            {/* Loading */}
-            {loading && (
+            {/* Loading Animation */}
+{loading && (
 
-              <div
-                className="
-                  inline-block
-                  bg-[#edf5ef]
-                  border
-                  border-[#d7e7dc]
-                  px-4
-                  py-3
-                  rounded-[18px]
-                  rounded-bl-[6px]
-                  text-[14px]
-                  text-gray-500
-                "
-              >
-                Nuform Assistant is typing...
-              </div>
+  <div
+    className="
+      inline-flex
+      items-center
+      gap-2
+      bg-[#edf5ef]
+      border
+      border-[#d7e7dc]
+      px-4
+      py-3
+      rounded-[18px]
+      rounded-bl-[6px]
+      shadow-sm
+    "
+  >
 
-            )}
+    {/* Dot 1 */}
+    <span
+      className="
+        w-[8px]
+        h-[8px]
+        rounded-full
+        bg-[#00c853]
+        animate-bounce
+      "
+      style={{
+        animationDelay: "0s",
+      }}
+    ></span>
+
+    {/* Dot 2 */}
+    <span
+      className="
+        w-[8px]
+        h-[8px]
+        rounded-full
+        bg-[#00b0ff]
+        animate-bounce
+      "
+      style={{
+        animationDelay: "0.15s",
+      }}
+    ></span>
+
+    {/* Dot 3 */}
+    <span
+      className="
+        w-[8px]
+        h-[8px]
+        rounded-full
+        bg-[#ff9100]
+        animate-bounce
+      "
+      style={{
+        animationDelay: "0.3s",
+      }}
+    ></span>
+
+  </div>
+
+)}
 
             {/* Suggestions */}
             {showSuggestions && (
